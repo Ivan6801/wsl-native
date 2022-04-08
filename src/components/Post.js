@@ -16,6 +16,7 @@ const Post = ({ post }) => {
         <Likes post={post} />
         <Caption post={post} />
         <CommentsSection post={post} />
+        <Comments post={post} />
       </View>
     </SafeAreaView>
   );
@@ -91,16 +92,38 @@ const Caption = ({ post }) => (
   </View>
 );
 
+// post.comments.length 👉🏻 0 or 1 or 2 or 3
+// 0 👉🏻 false
+// 1 👉🏻 true
+
 const CommentsSection = ({ post }) => (
   <View style={{ marginTop: 5 }}>
-    <Text style={{ color: "gray" }}>
-      {post.comments.length > 1 ? "Todos" : ""}{" "}
-      {post.comments.length > 1 ? "los comentarios" : "comentario"}
-      {" "}
-      {post.comments.length}
-    </Text>
+    {post.comments.length && (
+      <Text style={{ color: "gray" }}>
+        {post.comments.length > 1 ? "Todos" : ""}{" "}
+        {post.comments.length > 1 ? "los comentarios" : "comentario"}{" "}
+        {post.comments.length}
+      </Text>
+    )}
   </View>
 );
+
+const Comments = ({ post }) => (
+  <>
+    {post.comments.map((comment, index) => (
+      <View key={index} style={{ flexDirection: 'row', marginTop: 5, marginLeft: 20 }}>
+        <Text style={{ color: "black" }}>
+          <Text style={{ fontWeight: "600"}}>{comment.user}</Text>
+           {' '}{comment.comment}
+        </Text>
+      </View>
+    ))}
+  </>
+);
+
+// A.) 0 comments 👉🏻 Don't render component
+// B.) 1 comment 👉🏻 render component without "all" and singular comment
+// C.) 2 comment 👉🏻 render component with "all" and plural comments
 
 const styles = StyleSheet.create({
   story: {
