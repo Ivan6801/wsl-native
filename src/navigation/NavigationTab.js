@@ -9,6 +9,8 @@ import ProfileScreen from "../screens/Profile";
 
 const Tab = createBottomTabNavigator();
 
+const color  = "#2DD3C0"
+
 export default function NavigationTab() {
   return (
     <Tab.Navigator>
@@ -17,7 +19,7 @@ export default function NavigationTab() {
         component={HomeScreen}
         options={{
           tabBarLabel: "Inicio",
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ size }) => (
             <Icon name="home" color={color} size={size} />
           ),
         }}
@@ -27,7 +29,7 @@ export default function NavigationTab() {
         component={VocabularyScreen}
         options={{
           tabBarLabel: "Vocabulario",
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ size }) => (
             <Icon name="book" color={color} size={size} />
           ),
         }}
@@ -37,7 +39,7 @@ export default function NavigationTab() {
         component={ChatScreen}
         options={{
           tabBarLabel: "Chat",
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ size }) => (
             <IconE name="chat" color={color} size={size} />
           ),
         }}
@@ -47,7 +49,7 @@ export default function NavigationTab() {
         component={ProfileScreen}
         options={{
           tabBarLabel: "Perfil",
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ size }) => (
             <Icon name="user-circle" color={color} size={size} />
           ),
         }}

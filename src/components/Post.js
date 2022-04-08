@@ -131,8 +131,9 @@ const styles = StyleSheet.create({
     height: 35,
     borderRadius: 50,
     marginLeft: 6,
-    borderWidth: 1.6,
-    borderColor: "gray",
+    borderWidth: 1.8,
+    borderColor: "#2DD3C0",
+    marginBottom: 5,
   },
   footerIcon: {
     width: 30,

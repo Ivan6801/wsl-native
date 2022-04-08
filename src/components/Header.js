@@ -21,7 +21,7 @@ export default function Header() {
 const styles = StyleSheet.create({
   header: {
     borderBottomWidth: 1,
-    borderBottomColor: "gray",
+    borderBottomColor: "#2DD3C0",
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
