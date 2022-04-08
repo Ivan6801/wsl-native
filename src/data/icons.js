@@ -1,4 +1,4 @@
-export const postFooerIcons = [
+export const postFooTerIcons = [
   {
     name: "Like",
     imageUrl: "https://cdn-icons-png.flaticon.com/512/860/860808.png",
