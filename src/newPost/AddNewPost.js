@@ -3,18 +3,18 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import back from "../../assets/icons/atras.png";
 import FormikPostUploader from "./FormikPostUploader";
 
-export default function AddNewPost() {
+export default function AddNewPost({ navigation }) {
   return (
     <View style={styles.container}>
-      <Header />
+      <Header navigation={navigation} />
       <FormikPostUploader />
     </View>
   );
 }
 
-const Header = () => (
+const Header = ({ navigation }) => (
   <View style={styles.headerContainer}>
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.goBack("")}>
       <Image style={{ width: 30, height: 30 }} source={back} />
     </TouchableOpacity>
     <Text style={styles.headerText}>AÑADIR NUEVA PUBLICACIÓN</Text>

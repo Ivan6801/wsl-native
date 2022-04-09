@@ -1,19 +1,25 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import logo from "../../assets/logo/WSL.png";
 import addVideo from "../../assets/icons/add-video.png";
 import traductor from "../../assets/icons/traductor.png";
 import user from "../../assets/icons/user.png";
 
-export default function Header() {
+export default function Header({ navigation }) {
   return (
     <View style={styles.header}>
       <Image style={styles.logo} source={logo} />
       <View style={styles.headerRight}>
-        <Image style={styles.headerIcon} source={addVideo} />
-        <Image style={styles.headerIcon} source={traductor} />
-        <Image style={styles.headerIcon} source={user} />
+        <TouchableOpacity onPress={() => navigation.push("NewPost")}>
+          <Image style={styles.headerIcon} source={addVideo} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.push("Traductor")}>
+          <Image style={styles.headerIcon} source={traductor} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.push("Profile")}>
+          <Image style={styles.headerIcon} source={user} />
+        </TouchableOpacity>
       </View>
     </View>
   );

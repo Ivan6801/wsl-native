@@ -16,7 +16,10 @@ export default function FormikPostUploader() {
   return (
     <Formik
       initialValues={{ caption: "", imageUrl: "" }}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => {
+        console.log(values)
+        console.log('Your post was submitted successfully')
+      }}
       validationSchema={uploadPostSchema}
       validateOnMount={true}
     >
