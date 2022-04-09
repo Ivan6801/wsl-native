@@ -5,29 +5,38 @@ import HomeScreen from "../screens/Home";
 import ProfileScreen from "../screens/Profile";
 import NewPostScreen from "../screens/NewPostScreen";
 import TraductorScree from "../screens/Traductor";
+import LoginScreen from "../screens/LoginScreen";
 
 const Stack = createStackNavigator();
+
+const screenOptions = {
+  headerShown: false,
+};
 
 export default function NavigationStack() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="LoginScreen" screenOptions={screenOptions}>
         <Stack.Screen
           name="Home"
-          options={{ headerShown: false }}
           component={HomeScreen}
         />
         <Stack.Screen
           name="NewPost"
-          options={{ headerShown: false }}
           component={NewPostScreen}
         />
         <Stack.Screen
           name="Profile"
-          options={{ title: "Perfil" }}
           component={ProfileScreen}
         />
-        <Stack.Screen name="Traductor" component={TraductorScree} />
+        <Stack.Screen 
+          name="Traductor" 
+          component={TraductorScree} 
+        />
+        <Stack.Screen 
+          name="Login" 
+          component={LoginScreen} 
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

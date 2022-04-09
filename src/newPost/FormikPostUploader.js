@@ -3,22 +3,26 @@ import { View, Text, Image, TextInput, Button } from "react-native";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import { Divider } from "react-native-elements";
+import validUrl from "valid-url";
 
-const PLACEHOLDER_IMG = "https://cdn.pixabay.com/photo/2016/01/03/00/43/upload-1118928_960_720.png";
+const PLACEHOLDER_IMG =
+  "https://cdn.pixabay.com/photo/2016/01/03/00/43/upload-1118928_960_720.png";
 
 const uploadPostSchema = Yup.object().shape({
   imageUrl: Yup.string().url().required("A URL is required"),
   caption: Yup.string().max(2200, "Caption has reached the character"),
 });
 
-export default function FormikPostUploader() {
+export default function FormikPostUploader({ navigation }) {
   const [thumbnailUrl, setThumbnailUrl] = useState(PLACEHOLDER_IMG);
+
   return (
     <Formik
       initialValues={{ caption: "", imageUrl: "" }}
       onSubmit={(values) => {
-        console.log(values)
-        console.log('Your post was submitted successfully')
+        console.log(values);
+        console.log("Your post was submitted successfully");
+        navigation.goBack();
       }}
       validationSchema={uploadPostSchema}
       validateOnMount={true}
@@ -40,7 +44,11 @@ export default function FormikPostUploader() {
             }}
           >
             <Image
-              source={{ uri: thumbnailUrl ? thumbnailUrl : PLACEHOLDER_IMG}}
+              source={{
+                uri: validUrl.isUri(thumbnailUrl)
+                  ? thumbnailUrl
+                  : PLACEHOLDER_IMG,
+              }}
               style={{ width: 100, height: 100 }}
             />
             <View style={{ flex: 1, marginLeft: 12 }}>

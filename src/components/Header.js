@@ -17,7 +17,7 @@ export default function Header({ navigation }) {
         <TouchableOpacity onPress={() => navigation.push("Traductor")}>
           <Image style={styles.headerIcon} source={traductor} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.push("Profile")}>
+        <TouchableOpacity onPress={() => navigation.push("Login")}>
           <Image style={styles.headerIcon} source={user} />
         </TouchableOpacity>
       </View>
