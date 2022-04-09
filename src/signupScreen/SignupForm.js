@@ -12,23 +12,24 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import Validator from "email-validator";
 
-export default function LoginForm({ navigation }) {
-  const LoginFormSchema = Yup.object().shape({
+export default function SignupForm() {
+  const SignupFormSchema = Yup.object().shape({
     email: Yup.string().email().required("An email is required"),
+    username: Yup.string().required().min(2, "A username is required"),
     password: Yup.string()
       .required()
-      .min(8, "Your password has to have at least 8 characters"),
+      .min(6, "Your password has to have at least 8 characters"),
   });
 
   return (
     <View>
       <Formik
-        initialValues={{ email: "", password: "" }}
+        initialValues={{ email: "", username: "", password: "" }}
         onSubmit={(values, actions) => {
           console.log(values);
           actions.setSubmitting(false);
         }}
-        validationSchema={LoginFormSchema}
+        validationSchema={SignupFormSchema}
         validateOnMount={true}
       >
         {({ handleChange, handleBlur, handleSubmit, values, isValid }) => (
@@ -69,6 +70,27 @@ export default function LoginForm({ navigation }) {
             >
               <TextInput
                 placeholderTextColor="#444"
+                placeholder="Username"
+                autoCapitalize="none"
+                textContentType="username"
+                onChangeText={handleChange("username")}
+                onBlur={handleBlur("username")}
+                value={values.username}
+              />
+            </View>
+            <View
+              style={[
+                styles.inputField,
+                {
+                  borderColor:
+                    values.email.length < 1 || Validator.validate(values.email)
+                      ? "#ccc"
+                      : "#FF0000",
+                },
+              ]}
+            >
+              <TextInput
+                placeholderTextColor="#444"
                 placeholder="Password"
                 autoCapitalize="none"
                 autoCorrect={false}
@@ -88,12 +110,12 @@ export default function LoginForm({ navigation }) {
               onPress={handleSubmit}
               disabled={!isValid}
             >
-              <Text style={styles.buttonText}>Log In</Text>
+              <Text style={styles.buttonText}>Sign In</Text>
             </Pressable>
             <View style={styles.signupContainer}>
-              <Text>Don't have an account?</Text>
+              <Text>Already have an account?</Text>
               <TouchableOpacity onPress={() => navigation.push("Signup")}>
-                <Text style={styles.signupText}>Sign Up</Text>
+                <Text style={styles.signupText}>Log In</Text>
               </TouchableOpacity>
             </View>
           </>

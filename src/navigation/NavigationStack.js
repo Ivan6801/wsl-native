@@ -6,6 +6,7 @@ import ProfileScreen from "../screens/Profile";
 import NewPostScreen from "../screens/NewPostScreen";
 import TraductorScree from "../screens/Traductor";
 import LoginScreen from "../screens/LoginScreen";
+import SignupScreen from "../screens/SignupScreen";
 
 const Stack = createStackNavigator();
 
@@ -16,7 +17,7 @@ const screenOptions = {
 export default function NavigationStack() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LoginScreen" screenOptions={screenOptions}>
+      <Stack.Navigator initialRouteName="Signup" screenOptions={screenOptions}>
         <Stack.Screen
           name="Home"
           component={HomeScreen}
@@ -36,6 +37,10 @@ export default function NavigationStack() {
         <Stack.Screen 
           name="Login" 
           component={LoginScreen} 
+        />
+        <Stack.Screen 
+          name="Signup" 
+          component={SignupScreen} 
         />
       </Stack.Navigator>
     </NavigationContainer>
