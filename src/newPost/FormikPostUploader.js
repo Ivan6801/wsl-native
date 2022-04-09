@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { View, Text, Image, TextInput } from "react-native";
+import { View, Text, Image, TextInput, Button } from "react-native";
 import * as Yup from "yup";
 import { Formik } from "formik";
+import { Divider } from "react-native-elements";
 
-const PLACEHOLDER_IMG = "";
+const PLACEHOLDER_IMG = "https://cdn.pixabay.com/photo/2016/01/03/00/43/upload-1118928_960_720.png";
 
 const uploadPostSchema = Yup.object().shape({
   imageUrl: Yup.string().url().required("A URL is required"),
@@ -17,17 +18,62 @@ export default function FormikPostUploader() {
       initialValues={{ caption: "", imageUrl: "" }}
       onSubmit={(values) => console.log(values)}
       validationSchema={uploadPostSchema}
+      validateOnMount={true}
     >
-      {({ handleBlur, handleChange, handleSubmit, values, errors, isValid }) => (
+      {({
+        handleBlur,
+        handleChange,
+        handleSubmit,
+        values,
+        errors,
+        isValid,
+      }) => (
         <>
-          <View>
-            <Image />
+          <View
+            style={{
+              margin: 20,
+              justifyContent: "space-between",
+              flexDirection: "row",
+            }}
+          >
+            <Image
+              source={{ uri: thumbnailUrl ? thumbnailUrl : PLACEHOLDER_IMG}}
+              style={{ width: 100, height: 100 }}
+            />
+            <View style={{ flex: 1, marginLeft: 12 }}>
+              <TextInput
+                style={{ color: "black", fontSize: 20 }}
+                placeholder="Write a caption..."
+                placeholderTextColor="#2DD3C0"
+                multiline={true}
+                onChangeText={handleChange("caption")}
+                onBlur={handleBlur("caption")}
+                values={values.caption}
+              />
+            </View>
           </View>
-          <TextInput placeholder="Hello" />
+          <Divider width={1} orientation="vertical" />
+          <TextInput
+            onChange={(e) => setThumbnailUrl(e.nativeEvent.text)}
+            style={{ color: "black", fontSize: 20 }}
+            placeholder="Enter Image Url"
+            placeholderTextColor="#2DD3C0"
+            onChangeText={handleChange("imageUrl")}
+            onBlur={handleBlur("imageUrl")}
+            values={values.imageUrl}
+          />
+          {errors.imageUrl && (
+            <Text style={{ fontSize: 10, color: "red" }}>
+              {errors.imageUrl}
+            </Text>
+          )}
+          <Button
+            onPress={handleSubmit}
+            title="Share"
+            disabled={!isValid}
+          ></Button>
         </>
-      )
-    }
-
+      )}
     </Formik>
   );
 }

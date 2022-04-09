@@ -7,7 +7,7 @@ import Setting from "react-native-vector-icons/AntDesign";
 
 const Post = ({ post }) => {
   return (
-    <SafeAreaView style={{ marginBottom: 30 }}>
+    <SafeAreaView style={{ marginBottom: 10 }}>
       <Divider width={1} orientation="vertical" />
       <PostHeader post={post} />
       <PostImage post={post} />

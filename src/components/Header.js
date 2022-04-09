@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome5";
 import logo from "../../assets/logo/WSL.png";
 import addVideo from "../../assets/icons/add-video.png";
 import traductor from "../../assets/icons/traductor.png";
