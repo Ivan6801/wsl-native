@@ -1,13 +1,11 @@
 import React from "react";
+import { View, Text } from "react-native";
 import "react-native-gesture-handler";
-import NavigationStack from "./src/navigation/NavigationStack";
-// import NavigationTab from "./src/navigation/NavigationTab";
-// import NewPostScreen from "./src/screens/NewPostScreen";
 
 export default function App() {
-  return <NavigationStack />;
+  return (
+    <View>
+      <Text style={{ color: "blue", fontWeight: "500" }}>React Native</Text>
+    </View>
+  );
 }
-
-// <NewPostScreen />
-// <NavigationTab />
-// <NavigationStack />
