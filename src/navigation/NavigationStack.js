@@ -17,7 +17,7 @@ const screenOptions = {
 export default function NavigationStack() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Signup" screenOptions={screenOptions}>
+      <Stack.Navigator initialRouteName="Login" screenOptions={screenOptions}>
         <Stack.Screen
           name="Home"
           component={HomeScreen}

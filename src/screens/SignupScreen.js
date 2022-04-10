@@ -4,14 +4,13 @@ import WSL_LOGO from "../../assets/logo/WSL.png";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SignupForm from "../signupScreen/SignupForm";
 
-export default function SignupScreen() {
+export default function SignupScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.logoContainer}>
         <Image style={styles.wslLogo} source={WSL_LOGO} />
       </View>
-        <Text style={{ color: 'red', fontWeight: '900', fontSize: 18, marginBottom: 10 }}>(Sign Up servicio automatico)</Text>
-      <SignupForm />
+      <SignupForm navigation={navigation} />
     </SafeAreaView>
   );
 }
